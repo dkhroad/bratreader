@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='bratreader',
-      version="0.1",
+      version="0.2",
       description="Converts Brat standoff annotations to SpaCy JSON format",
       url='https://github.com/dkhroad/bratreader',
       author='Devinder Khroad',

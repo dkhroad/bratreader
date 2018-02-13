@@ -12,8 +12,9 @@ MIT
 
 # Installation
 
+
 ```python 
-pip install bratrader
+pip install -e git://github.com/dkhroad/bratreader.git@0.2#egg=bratreader-0.p install -e git://github.com/dkhroad/bratreader.git@0.1#egg=bratreader-0.2
 ```
 
 # Usage
