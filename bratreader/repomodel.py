@@ -1,7 +1,6 @@
-from annotateddocument import AnnotatedDocument
-from annotationimporter import importann
+from .annotateddocument import AnnotatedDocument
+from .annotationimporter import importann
 from glob import iglob
-
 import os
 
 
@@ -44,18 +43,12 @@ class RepoModel(object):
         else:
             raise IOError(u"{0} is not a valid directory".format(pathtorepo))
 
-    def save_xml(self, pathtofolder):
-        """
-        Export a RepoModel as a XML to the specified folder.
-
-        If the folder doesn't exist, it is created.
-        :param pathtofolder: (string) the path to the folder where the XML
-        should be exported.
-        """
+    def save_spacy_ner_json(self,pathtofolder):
         if not os.path.isdir(pathtofolder):
             os.mkdir(pathtofolder)
 
         for document in self.documents.values():
             path = os.path.join(pathtofolder,
-                                "{0}.xml".format(str(document.key)))
-            document.export_xml(path)
+                                "{0}.json".format(str(document.key)))
+            document.export_spacy_ner_json(path)
+

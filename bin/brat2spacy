@@ -1,0 +1,23 @@
+#!/Users/dkhroad/.venv/mm-ml/bin/python3
+
+import argparse 
+import sys
+
+import bratreader 
+from bratreader.repomodel import RepoModel
+
+parser = argparse.ArgumentParser(description="Convert standoff files to SpaCy NER entities JSON")
+
+parser.add_argument('-b', '--brat_datadir', dest='bratdir',help='Directory containing annotation files in Brat standoff format')
+parser.add_argument('-s','--spacy_datadir', dest='spacydir',help='Directory to store files in Spacy NER JSON format')
+
+args = parser.parse_args()
+
+if args.bratdir is None or args.spacydir is None:
+  parser.print_help()
+  sys.exit(1)
+
+
+repo = RepoModel(args.bratdir)
+repo.save_spacy_ner_json(args.spacydir)
+

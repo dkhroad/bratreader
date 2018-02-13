@@ -1,9 +1,10 @@
 # bratreader
-Python code for reading Brat Repositories.
+Python code for reading Brat Repositories and converting standoff annotations
+to JSON format suitable for training Spacy NER  
 
 # Version
 
-1.1
+0.1
 
 # License
 
@@ -11,24 +12,25 @@ MIT
 
 # Installation
 
-Currently, there are no particular installation instructions. Because BratReader will be used so locally, we assume users will be able to figure out themselves where they want to use the code in their project.
+```python 
+pip install bratrader
+```
 
 # Usage
 
-To use BratReader, simply import repomodel and point it to the directory containing both your `.ann` and `.txt` files.
+### To use BratReader, 
+
+```bash
+brat2spacy --brat_datadir <brat_dir> --spacy_datadir <dest>
+
+```
+where `brat_dir`  the directory containing both your `.ann` and `.txt` files.
+
+
+### To load converted SpaCy annotations 
 
 ```python
-from bratreader.repomodel import RepoModel
-
-r = RepoModel("path/to/bratfolder") # load repomodel
-r.documents            			    # all documents in your brat corpus
-
-doc = r.documents["001"] 			# get document with key 001
-print(doc.sentences)    			# a list of sentences in document
-print(doc.annotations)  			# the annotation objects in a document
-
-# Save to XML
-r.save_xml("my_folder")
-# This creates one XML document per original document
-# in the specified folder.
+from bratreader import utils
+utils.load_ner_json("<entities_annotations_file_in_spacy_format>.json")
 ```
+

@@ -2,8 +2,8 @@ import os
 
 from io import open
 from collections import OrderedDict, defaultdict
-from annotation import Annotation
-from sentence import Sentence
+from .annotation import Annotation
+from .sentence import Sentence
 
 
 def importann(pathtofile):
@@ -46,8 +46,9 @@ def _join(annotations, sentences):
             for s in sentences:
                 words = s.getwordsinspan(begin, end)
                 ann.words.extend(words)
-                for w in words:
-                    w.annotations.append(ann)
+                if len(words) > 0: words[0].annotations.append(ann)
+                # for w in words:
+                #     w.annotations.append(ann)
 
 
 def _createannotationobjects(annotations):

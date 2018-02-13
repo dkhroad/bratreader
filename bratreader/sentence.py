@@ -1,4 +1,4 @@
-from word import Word
+from .word import Word
 
 
 class Sentence(object):
